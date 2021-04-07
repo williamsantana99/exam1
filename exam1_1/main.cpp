@@ -14,7 +14,7 @@ uLCD_4DGL uLCD(D1, D0, D2); // serial tx, serial rx, reset pin;
 int main(void){
 
     float slew=0.25;
-    int sample=slew*8;
+    int sample=slew*8*5;
     int i;
     float k;
     float h;
@@ -23,19 +23,19 @@ int main(void){
         for(int i=0; i<sample; i++){
             float k=float(0.9*(i*1.0/(sample*1.0)));            
             aout=k;            
-            ThisThread::sleep_for(10ms);
+            ThisThread::sleep_for(2ms);
         }
     
 
-        for(int i=0; i<24-(2*sample); i++){
+        for(int i=0; i<24*5-(2*sample); i++){
             aout=0.9;
-            ThisThread::sleep_for(10ms);
+            ThisThread::sleep_for(2ms);
         }
 
         for(int i=0; i<sample; i++){
             float j=float(i*1.0/(sample*1.0));
             aout=0.9*(1.0-j);
-            ThisThread::sleep_for(10ms);
+            ThisThread::sleep_for(2ms);
         }
     
     }
